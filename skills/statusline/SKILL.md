@@ -1,9 +1,9 @@
 ---
-name: init-statusline
+name: statusline
 description: Claude Code 상태줄(statusline)을 미리 만든 두 줄 구성으로 설치한다. 첫 줄은 경로, 둘째 줄은 모델 (effort), 컨텍스트 사용량 막대, 5h/7d 사용 한도와 리셋 시각이다. "statusline 설정", "상태줄 만들어줘", "init statusline", 새 컨테이너나 새 머신에서 Claude Code 환경을 맞출 때, 상태줄에 컨텍스트나 사용 한도를 보이게 해달라고 할 때 이 스킬을 쓴다. 설치한 상태줄의 색, 순서, 항목을 바꿔달라는 요청에도 쓴다.
 ---
 
-# init-statusline
+# statusline
 
 `assets/statusline.js`를 Claude 설정 폴더에 복사하고 `settings.json`의 `statusLine`이 그 파일을 실행하게 한다. Node만 있으면 된다.
 
