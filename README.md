@@ -23,6 +23,16 @@ git clone https://github.com/raycon/skills.git
 cp -r skills/<스킬 이름> ~/.claude/skills/
 ```
 
+## 업데이트
+
+CLI로 설치했다면 스킬 파일은 `.agents/skills/`에 복사되고, `.claude/skills/`에는 그 폴더로 가는 링크가, `skills-lock.json`에는 설치한 커밋이 남는다. 저장소에 새 버전이 올라오면 프로젝트 루트에서 받는다.
+
+```bash
+npx skills update -p -y <스킬 이름>
+```
+
+설치한 스킬을 프로젝트 저장소에 함께 커밋해 두면 지금 쓰는 버전을 커밋 기록으로 알 수 있고, 문제가 생겼을 때 되돌리기 쉽다. 업데이트한 뒤에는 바뀐 내용을 확인하고 `.agents/skills/<스킬 이름>`과 `skills-lock.json`을 커밋한다.
+
 ## 스킬 목록
 
 ### 한국어 글쓰기
