@@ -1,114 +1,107 @@
 ---
 name: daily-note
-description: Obsidian Vault의 오늘 일일노트를 만들고 기록한다. "오늘 기록", "일일노트에 추가", "할 일 추가", "메모해줘", "오늘 한 일 정리", "하이라이트/감사/리뷰 적어줘"처럼 일일노트에 항목을 넣거나 완료 처리하거나 읽어 요약할 때 사용한다. 없으면 템플릿으로 노트를 만들고, 기존 내용은 덮어쓰지 않고 알맞은 섹션에 추가한다.
+description: Log things into a Markdown daily note (Obsidian or similar) and keep its tasks tidy. It adds memos, tasks, highlights, gratitude and scheduled items to the right section in the vault's format, creates the day's note from the template, and marks tasks done, cancelled, on hold or "someday" in the note where they were written. Use this skill whenever the user reports what they did, are doing or plan to do, in any wording, even without mentioning a note ("퇴근할게", "운동했어", "점심 김치찌개", "할 일에 적어", "메모해 줘", "오늘 기록", "일일노트", "그거 끝났어", "치과 취소됐어", "다음 주 화요일 3시 미팅", "시간 날 때 할 일 보여 줘"). For daily or weekly reviews, use a review skill if one is available.
 ---
 
-# 일일노트 관리
+# Daily Note
 
-Vault의 일일노트를 만들고, 섹션에 맞춰 기록한다. Vault 루트에 `CLAUDE.md`가 있으면 먼저 읽고, 아래 기본값과 다르면 `CLAUDE.md`를 따른다.
+Turn what the user says into short, consistent lines in their daily note.
 
-## 경로와 파일명
+A daily note is a log the user skims later, and plugins such as Obsidian Tasks and Dataview query it. A line in the wrong section or with a date marker in the wrong place silently drops out of those views. So the format matters more than the wording, and the wording should stay the user's own.
 
-- 위치: `0 Inbox/`
-- 파일명: `YYYY-MM-DD 요일.md`. 요일은 한 글자다. 예: `2026-10-20 화.md`
-- 날짜와 요일은 추측하지 말고 셸로 구한다.
+## Learn the vault's conventions first
 
-```bash
-TZ=Asia/Seoul date '+%Y-%m-%d %H:%M'
-LC_TIME=ko_KR.UTF-8 TZ=Asia/Seoul date '+%a'   # 로케일이 없으면 월화수목금토일 순서로 직접 매핑
+Vaults differ. Before writing, look for the conventions this vault already uses, and follow them over the defaults below:
+
+- Project instructions (`CLAUDE.md`, `AGENTS.md`, or similar) usually say where daily notes live, how files are named, which sections exist, which task states and emoji are allowed
+- The daily note template shows the section headings and the empty placeholders (`- `, `- [ ] `, `====`)
+- A few recent daily notes show how the user actually writes
+
+If you can't find a convention, use these defaults:
+
+| Thing | Default |
+| --- | --- |
+| Daily note | `journal/YYYY/YYYY-MM-DD.md`, created from the daily note template if one exists |
+| Sections | Highlight, Tasks, Notes, Gratitude, Review |
+| Task states | `[ ]` todo, `[/]` in progress, `[x]` done, `[>]` on hold, `[-]` cancelled, `[b]` someday |
+| Task dates | Obsidian Tasks emoji at the end of the line: `⏳` scheduled, `✅` done, `❌` cancelled |
+| Logged time | 24-hour `HH:MM` in backticks at the start of the line |
+| Memo emoji | None, unless the vault defines a list |
+
+Older notes may follow an older structure. When you write into an existing note, find sections by their emoji or name and keep that note's structure as it is.
+
+## Find the note
+
+1. **Pick the day.** Use today unless the user names another day. Something reported after the fact (a recording, a receipt) belongs to the day it happened.
+2. **Get the date from the shell**, in the user's timezone, including the weekday if file names use it. Don't work it out in your head; off-by-one weekdays are a common mistake.
+
+   ```bash
+   TZ=Asia/Seoul date '+%Y-%m-%d %a %H:%M'
+   ```
+
+3. **Open or create the note.** If it doesn't exist, copy the template and replace its date placeholder (`{{date}}`). Don't create notes for future days in advance.
+
+## Where things go
+
+| What the user says | Where | Line |
+| --- | --- | --- |
+| The one thing that matters most today | Highlight | `==Make Time 읽기==` |
+| Something to do, or something done | Tasks | `- [ ] 세탁소 맡기기`, `- [x] 책 반납` |
+| Something with a fixed date (appointment, deadline) | Tasks, in today's note | `- [ ] 15:00 치과 ⏳ 2026-11-23` |
+| Something for whenever there's time ("시간 날 때", "언젠가", "해 보고 싶다") | Tasks | `- [b] 오래된 사진 정리` |
+| Status, activity, food, thoughts, links, small facts | Notes | `` - `12:30` 🍜 점심 칼국수 `` |
+| Something they're grateful for | Gratitude | `- 동료가 커피를 사 줌` |
+| Keep, Problem, Try | Review | Same line for one item, a `- ` list below the line for several |
+
+- "할 일에 적어" always means the Tasks section, even when it sounds like a memo
+- A dated item goes in **today's** note with `⏳ <date>`, not in the note for that date. The vault's reminder query surfaces it on the day. A time of day goes at the start of the text, without backticks
+- Notes never use checkboxes. Use plain `- `
+- If you can't tell whether it's a task, use Notes for things that happened and Tasks for things still to do
+
+## Update existing tasks in place
+
+A task lives in the note where it was first written. Change that line instead of adding a new one, so nothing is listed twice.
+
+- **Done**: `[ ]` → `[x]` and add `✅ <date it was finished>` at the end
+- **Cancelled**: → `[-]` and add `❌ <date it was cancelled>`
+- **On hold** ("미뤄 둘게", "보류"): → `[>]`
+- **Someday task they decide to do**: `[b]` → `[ ]`
+- **Progress or result** ("물어봤어", "주문했어"): add a tab-indented sub-item under the task. Don't also write it as a memo. If it finished the task, mark the task done too
+- **A done task that leads to an appointment** (bought tickets, now visiting on Saturday): mark the task `[x]` and add the appointment as a separate `⏳` task. Don't repeat it in Notes
+
+Don't copy unfinished tasks into today's note. The reminder query already shows them, and copies drift apart.
+
+To find the task, search the journal for open lines that match. If several match or none do, ask which one instead of guessing.
+
+## Line format
+
+- **Date markers go last.** Nothing comes after `⏳`, `✅` or `❌`. If a line has two, `⏳` comes first: `- [x] 치과 ⏳ 2026-11-23 ✅ 2026-11-23`
+- **Logged time** starts every memo: `` - `08:50` 🏢 출근 ``. Use the clock time the user gave for when it happened; otherwise use the current time, when it's being recorded. Don't turn words like "점심", "아침" into a guessed time. A time that's part of the content (an appointment time) is plain text. Don't change the time format on lines the user wrote by hand
+- **Source links**: when an item comes from a source note (a recording transcript, a receipt), link the time to it. Use angle brackets because file names often contain spaces: ``- [`10:21`](<음성 20261113.md#음성 261113_102154>) 🥕 버즈 판매 완료``. Task lines put the link after the checkbox
+- **Memo emoji**: if the vault has an emoji list, pick exactly one per memo from it. Pick by what the thing is, not by a word in it. If nothing fits, use the vault's fallback emoji. Never invent one that isn't in the list
+- **Follow-ups**: a later memo on the same topic the same day goes under the first one as a tab-indented sub-item, without an emoji
+- **Links**: add `[[note name]]` when a related note exists. Check that it exists; don't make up names
+- **Placeholders**: when you fill a section, remove its empty placeholder (`- `, `- [ ] `, `====`). Leave untouched sections exactly as the template has them
+- **Wording**: keep what the user said. Fix typos and trim filler, but don't summarize away details or add facts they didn't give
+
+## Reading
+
+Some requests only read the notes: "오늘 뭐 했지", "시간 날 때 할 일 보여 줘", "보류한 거 뭐 있어". Search the journal, list the matching lines ordered by note date, and don't edit anything. Link the notes you used.
+
+## Reply
+
+Say in a line or two which note and section changed and what went in. If you added a dated item, mention the date so the user can put it on their calendar too.
+
+Example, after "점심 칼국수 먹었고, 다음 주 화요일 3시에 치과 예약했어" sent at 13:05:
+
 ```
-
-"오늘"은 Asia/Seoul 기준이다. 어제, 지난 금요일처럼 다른 날짜를 지정하면 그 날짜의 노트를 대상으로 한다.
-
-## 노트 만들기
-
-1. 대상 날짜의 파일이 있는지 확인한다. 있으면 그대로 쓴다.
-2. 없으면 `0 Templates/일일노트.md`를 복사해 만들고 `{{date}}`를 `YYYY-MM-DD`로 바꾼다.
-3. 템플릿이 없으면 만들지 말고 사용자에게 알린다.
-
-템플릿 구조:
-
-```markdown
----
-created: "YYYY-MM-DD"
-tags:
-  - daily
-activity:
----
-## 💡 하이라이트
-
-====
-
 ## 🚧 작업
 
-- [ ] 
+- [ ] 15:00 치과 ⏳ 2026-11-24
 
 ## 📃 메모
 
-- 
-
-## 🔗 참고
-
-- 
-
-## 😌 감사
-
-- 
-
-## 🔮 리뷰
-
-Keep: 
-Problem: 
-Try: 
+- `13:05` 🍜 점심 칼국수
 ```
 
-제목 줄의 공백 수는 노트마다 다르다. 섹션은 이모지와 이름으로 찾고, 제목 줄은 고치지 않는다. frontmatter의 `activity:`는 사용자가 요청할 때만 채운다.
-
-## 어느 섹션에 넣을지
-
-| 내용 | 섹션 | 형식 |
-|---|---|---|
-| 오늘 가장 중요한 한 가지 | 💡 하이라이트 | `==내용==` |
-| 할 일, 한 일, 처리한 일 | 🚧 작업 | `- [ ]` 또는 `- [x]` |
-| 구매 내역, 아이디어, 사실, 짧은 기록 | 📃 메모 | `- 내용` |
-| URL, 문서, 다른 노트 링크 | 🔗 참고 | `- 링크` |
-| 고마운 일 | 😌 감사 | `- 내용` |
-| 회고 | 🔮 리뷰 | `Keep:`, `Problem:`, `Try:` 뒤에 이어 쓴다 |
-
-- 판단이 애매하면 할 일이면 작업, 아니면 메모에 넣는다.
-- 시각이 있으면 항목 앞에 `HH:MM `을 붙인다. 예: `- [x] 17:30 헤어살롱`. 사용자가 시각을 말하지 않았으면 만들어 붙이지 않는다.
-- 하위 내용은 탭으로 들여쓴 `- `로 단다.
-- 내부 링크는 `[[노트명]]` 형식이다. 사용자가 준 이름만 쓰고, 없는 노트명을 지어내지 않는다.
-
-### 작업 상태 표시
-
-| 표시 | 뜻 |
-|---|---|
-| `- [ ]` | 할 일 |
-| `- [x]` | 완료 |
-| `- [>]` | 연기 |
-| `- [-]` | 취소 |
-| `- [/]` | 진행 중 |
-| `- [!]` | 중요 |
-
-한 일을 말하면 `[x]`로, 앞으로 할 일을 말하면 `[ ]`로 넣는다.
-
-## 쓰는 규칙
-
-- 기존 내용은 덮어쓰지 않는다. 섹션의 마지막 항목 뒤에 추가한다.
-- 빈 자리표시(`- [ ] `, `- `, `====`)가 남아 있으면 첫 항목이 그 자리를 대신한다. 빈 줄을 항목 사이에 남기지 않는다.
-- 하이라이트는 `====`를 `==내용==`으로 바꾼다. 이미 하이라이트가 있으면 사용자에게 바꿀지 묻는다.
-- 완료 처리는 해당 항목의 `[ ]`만 `[x]`로 바꾼다. 항목 문구는 그대로 둔다. 일치하는 항목이 여럿이거나 없으면 묻는다.
-- 사용자가 말한 내용을 요약하거나 고쳐 쓰지 않는다. 오탈자와 띄어쓰기만 바로잡는다.
-- 문장은 간결한 한국어로 쓴다. 항목을 나열할 때 `·` 대신 `,`를 쓴다.
-- 파일 이동, 삭제, 이름 변경은 먼저 확인받는다. `.obsidian/`은 건드리지 않는다.
-
-## 읽기와 요약
-
-"오늘 뭐 했지", "이번 주 정리" 같은 요청은 해당 날짜의 노트를 읽고 답한다. 파일을 수정하지 않는다. 기간이 주어지면 `0 Inbox/`에서 그 범위의 파일명만 골라 읽는다. 지난 노트가 `4 Archives/`로 옮겨졌을 수 있으니, `0 Inbox/`에 없으면 `4 Archives/`에서 찾는다.
-
-미완료 작업(`[ ]`, `[>]`, `[/]`)을 오늘로 옮기는 일은 사용자가 요청할 때만 한다. 옮길 때는 원래 노트의 항목을 지우지 않고 오늘 노트에 복사한다.
-
-## 마무리
-
-기록한 뒤 변경한 파일 경로와, 어느 섹션에 무엇을 넣었는지를 한두 줄로 알린다.
+> 11-17 일일노트에 적었어요. 작업: 치과(11-24 15:00), 메모: 점심 칼국수. 치과는 달력에도 넣어 두세요.
