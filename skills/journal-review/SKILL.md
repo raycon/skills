@@ -1,6 +1,7 @@
 ---
 name: journal-review
-description: Run a daily or weekly review on Markdown daily notes (Obsidian or similar). It asks the user about one topic at a time, offers answer options taken from their own notes, and writes the answers back into the notes. Use this skill whenever the user asks to review or reflect on a day or a week, in any wording: "회고", "어제 회고", "오늘 돌아보기", "하루 정리", "주간 회고", "이번 주 정리", "KPT", "daily review", "weekly review", "retro". Also use it when the user wants to sort through unfinished tasks spread across journal notes, even if they don't say "review".
+description: >-
+  Run a daily or weekly review on Markdown daily notes (Obsidian or similar). It asks the user about one topic at a time, offers answer options taken from their own notes, and writes the answers back into the notes. Use this skill whenever the user asks to review or reflect on a day or a week, in any wording: "회고", "어제 회고", "오늘 돌아보기", "하루 정리", "주간 회고", "이번 주 정리", "KPT", "daily review", "weekly review", "retro". Also use it when the user wants to sort through unfinished tasks spread across journal notes, even if they don't say "review".
 ---
 
 # Journal Review
