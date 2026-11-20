@@ -1,7 +1,7 @@
 ---
 name: topic-notes
 description: >-
-  Keep knowledge in topic notes in a Markdown vault (Obsidian or similar), apart from the daily log. It records information (prices, sizes, conditions, how-tos) and the user's own judgments (conclusions, preferences, decisions, lessons) in the note for that subject, creates notes named by subject, dates each entry, keeps old values when they change, and checks the vault for broken links and stray or overlapping notes. Use this skill whenever something worth finding again comes up, in any wording or from any source: a price comparison, a size that fit, a how-to, advice, a decision and its reason, a link to keep ("이거 저장해 줘", "요금제 비교해 봤는데", "다음엔 생수 챙겨야겠다"); when another skill (daily note, voice memo, review) has knowledge to file; when the user asks what their notes say ("유산균 어디가 제일 쌌지?"); or when they ask to check or tidy the vault ("Vault 점검해 줘").
+  Keep knowledge in topic notes in a Markdown vault (Obsidian or similar), apart from the daily log. It records information (prices, sizes, conditions, how-tos) and the user's own judgments (conclusions, preferences, decisions, lessons) in the note for that subject, creates notes named by subject, dates each entry, keeps old values when they change, and checks the vault for broken links and stray or overlapping notes. Use this skill whenever something worth finding again comes up, in any wording or from any source: a price comparison, a size that fit, a how-to, advice, a decision and its reason, a link to keep ("save this", "I compared the phone plans", "next time bring water"); when knowledge turns up while handling something else (a recording, a review); when the user asks what their notes say ("where was it cheapest?"); or when they ask to check or tidy the vault.
 ---
 
 # Topic Notes
@@ -20,7 +20,6 @@ Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar) and
 | Frontmatter | `created: "YYYY-MM-DD"` and `tags`, in the vault's existing format |
 | Entry date | `` `YYYY-MM-DD` `` at the start of the line: the day it was learned |
 | Web sources | A `## 참고` section at the end of the note, with the URLs |
-| Pointer | One memo in that day's daily note, linking the topic note |
 
 ## Information and judgment
 
@@ -35,8 +34,8 @@ The most useful entries pair the two: a size chart and the size that actually fi
 ## Find or create the note
 
 1. **Search first**: file names, aliases, headings, then content. Adding to a broader existing note beats creating a narrow new one; a vault of one-fact notes is as hard to use as no notes.
-2. **Create only when nothing fits.** Name the note by the subject the user would search for: `유산균`, not `락토핏 가격 비교 11월`. Place it by the vault's classification (in PARA: a Project if it has a deadline or end, an Area if it's ongoing, a Resource for reference). If unsure, put it in the inbox and say so.
-3. **People are not topics.** What the user learns about a person goes to that person's note (a people-notes skill if available).
+2. **Create only when nothing fits.** Name the note by the subject the user would search for: `무선 이어폰`, not `이어폰 가격 비교 11월`. Place it by the vault's classification (in PARA: a Project if it has a deadline or end, an Area if it's ongoing, a Resource for reference). If unsure, put it in the inbox and say so.
+3. **People are not topics.** What the user learns about a person belongs in that person's note, not here.
 
 ## Write the entry
 
@@ -44,7 +43,6 @@ The most useful entries pair the two: a size chart and the size that actually fi
 - Put it under the heading it belongs to. Add headings once a note grows into parts
 - When a value or a judgment changes, add a new dated line and keep the old one. Both were true at their time, and old prices are often what the user is comparing against
 - Name the source when it isn't the user: URLs go in `## 참고`; something heard names who said it (`매장 직원`, `[[김민수]]`)
-- Leave a pointer in the daily note of that day: one memo that names the subject and links the note, for example ``- `14:59` ℹ️ 러닝화 착화감 기록 [[발사이즈]]``. The details live only in the topic note. Load the daily-note skill, if available, before writing it; it has the line format and the memo emoji
 
 ## Tidy a note
 
@@ -70,4 +68,4 @@ Propose a fix for each, and change only what the user approves.
 
 ## Reply
 
-Say which topic note changed, whether it's new, what went in, and the pointer memo in the daily note. Name new notes explicitly, so the vault never grows without the user noticing.
+Say which topic note changed, whether it's new, and what went in. Name new notes explicitly, so the vault never grows without the user noticing. Include a one-line summary and the note's link, so the entry can be pointed to from elsewhere (a daily log, for example).

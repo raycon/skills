@@ -1,7 +1,7 @@
 ---
 name: journal-review
 description: >-
-  Run a daily or weekly review on Markdown daily notes (Obsidian or similar). It asks the user about one topic at a time, offers answer options taken from their own notes, and writes the answers back into the notes. Use this skill whenever the user asks to review or reflect on a day or a week, in any wording: "회고", "어제 회고", "오늘 돌아보기", "하루 정리", "주간 회고", "이번 주 정리", "KPT", "daily review", "weekly review", "retro". Also use it when the user wants to sort through unfinished tasks spread across journal notes, even if they don't say "review".
+  Run a daily or weekly review on Markdown daily notes (Obsidian or similar). It asks the user about one topic at a time, offers answer options taken from their own notes, and writes the answers back into the notes. Use this skill whenever the user asks to review or reflect on a day or a week, in any wording: "review today", "how did yesterday go", "wrap up the week", "KPT", "daily review", "weekly review", "retro". Also use it when the user wants to sort through unfinished tasks spread across journal notes, even if they don't say "review".
 ---
 
 # Journal Review
@@ -63,14 +63,14 @@ Example summary and review block:
 ```
 11-18 (수)
 - 한 일: 치과 정기 검진, 책 반납
-- 메모: 퇴근 후 30분 걷기, "생각보다 개운했다"
+- 메모: 점심 먹고 산책, "머리가 맑아졌다"
 - 남은 작업: 세탁소 맡기기
 ```
 
 ```
-Keep: 귀찮아도 퇴근 후 일단 나가서 걸음
-Problem: 늦게 먹은 야식 때문에 잠이 늦어짐
-Try: 저녁을 든든히 먹고 9시 이후엔 먹지 않기
+Keep: 점심 먹고 10분 산책
+Problem: 오후 회의가 길어져 보고서를 못 씀
+Try: 오전에 보고서부터 쓰기
 ```
 
 ## Weekly review
@@ -79,7 +79,7 @@ The goal is to leave the week with a clean task list and no useful information b
 
 1. **Open tasks.** Collect `[ ]` and `[/]` tasks from the journal, ordered by note date. For each one, ask whether to keep it (leave it as is), mark it done (`[x]` + `✅ <date>`), or drop it (`[-]` + `❌ <date>`). Use today's date unless the user gives another. Edit the task in its original note. Don't copy it into a new note. Leave tasks the user doesn't answer as they are.
 2. **On hold and someday tasks.** Show `[>]` tasks and any "someday" tasks the vault uses, and ask which ones to take on this week. Change those to `[ ]` in place.
-3. **Knowledge left in daily notes.** Knowledge should reach topic notes when it's recorded; this step catches what didn't. Look through the week's notes for things the user will want to find again: a recipe, a product they compared, a size that fit, advice someone gave, a conclusion they reached. Suggest where each one should go, preferring existing notes over new ones. Leave notes that only matter in the context of that day. Move only what the user approves, following the topic-notes skill if available, and leave a one-line pointer with a link in the original note (for example `ℹ️ 갈비탕 레시피 정리 [[갈비탕]]`).
+3. **Knowledge left in daily notes.** Knowledge should reach topic notes when it's recorded; this step catches what didn't. Look through the week's notes for things the user will want to find again: a recipe, a product they compared, a size that fit, advice someone gave, a conclusion they reached. Suggest where each one should go, preferring existing notes over new ones. Leave notes that only matter in the context of that day. End with the list of approved items and where each one goes; recording them in those notes is a separate step, after which the original line becomes a one-line pointer with a link.
 
 When there are many tasks, ask in batches of 4 so each answer stays a single tap.
 
