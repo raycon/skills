@@ -5,21 +5,21 @@ Read the image once and write down what it says, not what it probably says. Wron
 ## Fields
 
 ```
-종류: 영수증
-날짜: 2026-11-16
-시각: 22:09
-가맹점: 동네마트 중앙점
-금액: 8980
-카드: 12345678 국민 일시불
-승인번호: 30012345
-확인: 없음
-## 품목
-| 품목 | 단가 | 수량 | 금액 |
+Kind: receipt
+Date: 2026-11-16
+Time: 22:09
+Merchant: Corner Market Central
+Amount: 8980
+Card: 12345678 KB single payment
+Approval: 30012345
+Check: none
+## Items
+| Item | Unit price | Qty | Amount |
 | --- | ---: | ---: | ---: |
-| 대파 1단 | 2,980 | 1 | 2,980 |
-| 감자칩 150g | 3,500 | 2 | 7,000 |
-## 할인
-- 쿠폰 -1,000
+| Green onions | 2,980 | 1 | 2,980 |
+| Potato chips 150g | 3,500 | 2 | 7,000 |
+## Discounts
+- Coupon -1,000
 ```
 
 - **Date and time**: when the payment was approved. If there's no approval time, use the transaction time printed on the receipt
@@ -33,21 +33,21 @@ Read the image once and write down what it says, not what it probably says. Wron
 
 ## Check
 
-Add up the item amounts, subtract the discounts, and compare with the amount paid. If it matches and every field was readable, write `확인: 없음`. Otherwise describe the problem in one line, for example `품목 합계 9,980, 할인 1,000, 결제 8,980 중 두 번째 품목 금액이 흐림`.
+Add up the item amounts, subtract the discounts, and compare with the amount paid. If it matches and every field was readable, write `Check: none`. Otherwise describe the problem in one line, for example `items 9,980, discounts 1,000, paid 8,980; the second item's amount is blurry`.
 
 Write unreadable characters as `?` and mention them in the check. Don't guess.
 
 ## Medical bills
 
-Use the clinic name as the merchant, add `환자: <name>` after the card line, and replace `## 품목` with only the lines the bill shows:
+Use the clinic name as the merchant, add `Patient: <name>` after the card line, and replace `## Items` with only the lines the bill shows:
 
 ```
-## 진료비
-- 진료일: 2026-11-16
-- 진료과: 소아청소년과
-- 본인부담금: 5,600
-- 비급여: 0
-- 결제금액: 5,600
+## Medical bill
+- Visit date: 2026-11-16
+- Department: Pediatrics
+- Patient's share: 5,600
+- Non-covered: 0
+- Paid: 5,600
 ```
 
 ## Other images

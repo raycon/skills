@@ -50,10 +50,10 @@ Some users use their own recordings to practice a language. Add the translation 
 ```
 ## 음성 261113_102154
 
-자전거 팔았어. 오만 원 받았어.
+<transcript, exactly as spoken>
 
 > I sold my bike. I got 50k for it.
-> - `get [money] for [item]`: ~받고 팔다. 판 가격을 말할 때 흔히 쓴다
+> - `get [money] for [item]`: <meaning in the user's language>. Common when saying what something sold for
 ```
 
 ### 4. Hand off what was said
@@ -61,7 +61,7 @@ Some users use their own recordings to practice a language. Add the translation 
 What the recording says is recorded like a message from the user, with these facts attached:
 
 - **Day**: the recording date, not today
-- **Time**: the time given for something already done ("7시에 저녁 먹었어" → `19:00`), otherwise the recording time. A future appointment's time is part of its content, not the entry time
+- **Time**: the time given for something already done ("had dinner at 7" → `19:00`), otherwise the recording time. A future appointment's time is part of its content, not the entry time
 - **Source link**: ``<raw note.md#section>`` for a voice memo, ``<raw note.md>`` for a call, so each derived entry can link back
 - **Caller**: for a call, the contact name from the file name
 - **Re-run**: when the same recording is processed again, entries that already link it are updated, not added again
@@ -70,7 +70,7 @@ Organize by subject, never by recording: no summary or analysis note per recordi
 
 ### 5. Instructions inside a recording
 
-Users also give instructions by voice: "할 일에 적어", "아까 그거 지워", "~가 아니고 ~야", "~ 노트에 추가해", "그 일 끝났어".
+Users also give instructions by voice: "put it on my tasks", "delete that last one", "not X, it's Y", "add it to the X note", "that's done".
 
 - These are requests like any message, but there's no way to confirm them. Pass them on to be carried out inside the vault, even when they change or delete existing content
 - A correction fixes the original entry directly, not with a separate correction line

@@ -32,15 +32,15 @@ Older notes may follow an older structure. When you write into an existing note,
 
 ## How to ask
 
-Each topic gets its own question. A topic the user can skip always has a "없음" (none) option, so skipping doesn't feel like failing.
+Each topic gets its own question. A topic the user can skip always has a "none" option, so skipping doesn't feel like failing.
 
-- **Options come from the record.** Use the user's own notes, especially lines where they already judged something ("좋았다", "다음엔 이렇게 해야지"). In the description, say where each option comes from. Options are candidates for the user to choose from. Never put a judgment in an option that the notes don't support.
+- **Options come from the record.** Use the user's own notes, especially lines where they already judged something ("that went well", "next time I'll do it this way"). In the description, say where each option comes from. Options are candidates for the user to choose from. Never put a judgment in an option that the notes don't support.
 - **With a question tool** (such as `AskUserQuestion`): ask up to 4 questions per call, each with 2 to 4 options. The tool adds a free-text "Other" choice by itself, so don't add one. If there are more than 4 topics, make another call.
-- **Without one** (chat bots, messaging apps): send all the questions in one message as numbered lists, and let the user answer briefly, for example "1-2, 2-1, 3: 직접 쓴 답".
+- **Without one** (chat bots, messaging apps): send all the questions in one message as numbered lists, and let the user answer briefly, for example "1-2, 2-1, 3: my own answer".
 
 ## Daily review
 
-1. **Pick the day.** "어제 회고" means yesterday, "회고" or "오늘 회고" means today. If a date is named, use that date.
+1. **Pick the day.** "Review yesterday" means yesterday; "review" or "review today" means today. If a date is named, use that date.
 2. **Gather the record.** Read that day's tasks and notes. Also search the other journal notes for tasks finished that day (`✅ <that date>`). People often finish older tasks without writing anything new. Then open the previous daily note and check whether it has a Try.
 3. **Show a short summary.** In a few lines, show what happened, what got done, and what is still open. This is a reminder for the user, not an assessment.
 4. **Ask, in this order:**
@@ -61,16 +61,16 @@ Each topic gets its own question. A topic the user can skip always has a "없음
 Example summary and review block:
 
 ```
-11-18 (수)
-- 한 일: 치과 정기 검진, 책 반납
-- 메모: 점심 먹고 산책, "머리가 맑아졌다"
-- 남은 작업: 세탁소 맡기기
+11-18 (Wed)
+- Done: dentist checkup, returned the library book
+- Notes: walk after lunch, "cleared my head"
+- Still open: drop off the dry cleaning
 ```
 
 ```
-Keep: 점심 먹고 10분 산책
-Problem: 오후 회의가 길어져 보고서를 못 씀
-Try: 오전에 보고서부터 쓰기
+Keep: a 10-minute walk after lunch
+Problem: a long afternoon meeting left no time for the report
+Try: write the report first thing in the morning
 ```
 
 ## Weekly review

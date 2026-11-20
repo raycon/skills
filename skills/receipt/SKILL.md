@@ -50,13 +50,13 @@ Search existing receipt notes for the same approval number. Without one, compare
 Record them like a receipt, with these changes:
 
 - Add `patient: "[[name]]"`, the person the bill is for. If the patient can't be identified, leave it empty and ask in the reply
-- Replace the items table with a `## 진료비` list of what the bill shows: visit date, department, patient's share, non-covered amount, amount paid
+- Replace the items table with a medical-bill list (`## Medical bill`) of what the bill shows: visit date, department, patient's share, non-covered amount, amount paid
 
 ## Reply
 
 Say what was recorded, then the fields for logging the purchase elsewhere:
 
-- Payment date and time, merchant, a short summary of what was bought ("장보기" for a long list), amount paid, payment method
+- Payment date and time, merchant, a short summary of what was bought ("groceries" for a long list), amount paid, payment method
 - The receipt note's path, to link to
 - For a medical bill: the patient and the clinic
 

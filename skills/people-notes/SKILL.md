@@ -28,21 +28,21 @@ Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar), th
 
 ## Create a person
 
-- The file name is the name the user uses for them. A title or nickname is fine when that's how they're saved or called (`엄마.md`, `민수형.md`). Put other names in `aliases`
-- When a second person with the same name appears, add where each was first met in parentheses (`김민수 (회사).md`, `김민수 (대학).md`). Renaming an existing note needs the user's confirmation, and links to it must be updated after the rename
+- The file name is the name the user uses for them. A title or nickname is fine when that's how they're saved or called (`Mom.md`, `Uncle Joe.md`). Put other names in `aliases`
+- When a second person with the same name appears, add where each was first met in parentheses (`Alex Kim (work).md`, `Alex Kim (college).md`). Renaming an existing note needs the user's confirmation, and links to it must be updated after the rename
 - Fill only what you know. Leave the rest of the template empty
 
 ## What goes where
 
 | Section | Content |
 | --- | --- |
-| Summary | Who they are in one line (아내, 전 회사 팀장) |
+| Summary | Who they are in one line (wife, former team lead) |
 | Relationship | When and where they first met, who introduced them, mutual friends. Link people as `[[name]]` |
-| Info | Facts that stay true for a while, without checkboxes or source links. Facts that never change (family relations, school) have no date. Facts that can change (job, neighborhood, tastes) start with the date they were learned in backticks: ``- `2026-11-13` OO회사 마케팅팀``. When one changes, add a new line and keep the old one |
+| Info | Facts that stay true for a while, without checkboxes or source links. Facts that never change (family relations, school) have no date. Facts that can change (job, neighborhood, tastes) start with the date they were learned in backticks: ``- `2026-11-13` Marketing at Acme``. When one changes, add a new line and keep the old one |
 | Log | Calls, messages, meetings, events, in date order: `- YYYY-MM-DD <icon> <kind>`, with the details as sub-items |
 | Next contact | Things to ask, favors and promises, as `- [ ]`. Mark `[x]` when done |
 
-Default log icons: ☎️ call, 💬 message, 🤝 meeting, 🚑 medical visit, 🎁 gift or celebration, 🎗️ condolence. If there's a source recording, link it on the icon with the time as the label: `- 2026-11-13 ☎️[[통화 김민수_261113_143012|14:30]] 통화`.
+Default log icons: ☎️ call, 💬 message, 🤝 meeting, 🚑 medical visit, 🎁 gift or celebration, 🎗️ condolence. If there's a source recording, link it on the icon with the time as the label: `- 2026-11-13 ☎️[[통화 김민수_261113_143012|14:30]] call`.
 
 After adding a log entry, set `last_contact` to that date if it's later than the current one.
 

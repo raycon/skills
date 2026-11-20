@@ -47,17 +47,17 @@ Older notes may follow an older structure. When you write into an existing note,
 
 | What it is | Where | Line |
 | --- | --- | --- |
-| The one thing that matters most today | Highlight | `==보고서 초안 끝내기==` |
-| Something to do, or something done | Tasks | `- [ ] 세탁소 맡기기`, `- [x] 책 반납` |
-| Something with a fixed date (appointment, deadline) | Tasks, in today's note | `- [ ] 15:00 치과 ⏳ 2026-11-23` |
-| Something for whenever there's time ("시간 날 때", "언젠가", "해 보고 싶다") | Tasks | `- [b] 오래된 사진 정리` |
-| Status, activity, food, feelings, thoughts, links | Notes | `` - `12:30` 🍜 점심 칼국수 `` |
-| A purchase | Notes | `` - `18:40` 🛒 동네마트, 장보기, 23,500원, 카드 이름 `` |
-| A pointer to a note that holds the details (a topic, a person, a receipt) | Notes | `` - `14:59` ℹ️ 전기요금 누진제 정리 [[전기요금]] `` |
-| Something they're grateful for | Gratitude | `- 동료가 커피를 사 줌` |
+| The one thing that matters most today | Highlight | `==Finish the report draft==` |
+| Something to do, or something done | Tasks | `- [ ] Drop off the dry cleaning`, `- [x] Return the library book` |
+| Something with a fixed date (appointment, deadline) | Tasks, in today's note | `- [ ] 15:00 Dentist ⏳ 2026-11-23` |
+| Something for whenever there's time ("when I have time", "someday", "I'd like to try") | Tasks | `- [b] Sort old photos` |
+| Status, activity, food, feelings, thoughts, links | Notes | `` - `12:30` 🍜 Noodle soup for lunch `` |
+| A purchase | Notes | `` - `18:40` 🛒 Corner market, groceries, $23.50, card name `` |
+| A pointer to a note that holds the details (a topic, a person, a receipt) | Notes | `` - `14:59` ℹ️ Electricity rate tiers [[Electricity bill]] `` |
+| Something they're grateful for | Gratitude | `- A coworker bought me coffee` |
 | Keep, Problem, Try | Review | Same line for one item, a `- ` list below the line for several |
 
-- "할 일에 적어" always means the Tasks section, even when it sounds like a memo
+- "Put it on my tasks" always means the Tasks section, even when it sounds like a memo
 - A dated item goes in **today's** note with `⏳ <date>`, not in the note for that date. The vault's reminder query surfaces it on the day. A time of day goes at the start of the text, without backticks
 - Notes never use checkboxes. Use plain `- `
 - If you can't tell whether it's a task, use Notes for things that happened and Tasks for things still to do
@@ -65,7 +65,7 @@ Older notes may follow an older structure. When you write into an existing note,
 
 ## Purchases
 
-- The line goes in the note of the **payment** day, at the payment time: merchant, what was bought (a short summary such as "장보기" for a long list), amount, payment method
+- The line goes in the note of the **payment** day, at the payment time: merchant, what was bought (a short summary such as "groceries" for a long list), amount, payment method
 - Use the payment method's display name. If the card isn't listed, write it as given and ask which card it is
 - A card message or a spoken purchase has only what it says. Don't add items it doesn't name
 - Before writing, look for the same purchase: the same approval number, or the same time, merchant and amount. If it's already there, skip it and say so
@@ -78,9 +78,9 @@ A task lives in the note where it was first written. Change that line instead of
 
 - **Done**: `[ ]` → `[x]` and add `✅ <date it was finished>` at the end
 - **Cancelled**: → `[-]` and add `❌ <date it was cancelled>`
-- **On hold** ("미뤄 둘게", "보류"): → `[>]`
+- **On hold** ("let's put it off", "on hold"): → `[>]`
 - **Someday task they decide to do**: `[b]` → `[ ]`
-- **Progress or result** ("물어봤어", "주문했어"): add a tab-indented sub-item under the task. Don't also write it as a memo. If it finished the task, mark the task done too
+- **Progress or result** ("I asked", "I ordered it"): add a tab-indented sub-item under the task. Don't also write it as a memo. If it finished the task, mark the task done too
 - **A done task that leads to an appointment** (bought tickets, now visiting on Saturday): mark the task `[x]` and add the appointment as a separate `⏳` task. Don't repeat it in Notes
 
 Don't copy unfinished tasks into today's note. The reminder query already shows them, and copies drift apart.
@@ -89,9 +89,9 @@ To find the task, search the journal for open lines that match. If several match
 
 ## Line format
 
-- **Date markers go last.** Nothing comes after `⏳`, `✅` or `❌`. If a line has two, `⏳` comes first: `- [x] 치과 ⏳ 2026-11-23 ✅ 2026-11-23`
-- **Logged time** starts every memo: `` - `08:50` 🏢 출근 ``. Use the clock time given for when it happened; for something from a source, the source's time (when it was recorded, when it was paid); otherwise the current time. Don't turn words like "점심", "아침" into a guessed time. A time that's part of the content (an appointment time) is plain text. Don't change the time format on lines the user wrote by hand
-- **Source links**: when an item comes from a source note (a recording transcript, a receipt), link the time to it. Use angle brackets because file names often contain spaces: ``- [`10:21`](<음성 20261113.md#음성 261113_102154>) 🥕 중고 자전거 판매``. Task lines put the link after the checkbox: ``- [ ] [`19:30`](<음성 20261118.md#음성 261118_193012>) 19:00 친구와 저녁 ⏳ 2026-11-26``
+- **Date markers go last.** Nothing comes after `⏳`, `✅` or `❌`. If a line has two, `⏳` comes first: `- [x] Dentist ⏳ 2026-11-23 ✅ 2026-11-23`
+- **Logged time** starts every memo: `` - `08:50` 🏢 Got to work ``. Use the clock time given for when it happened; for something from a source, the source's time (when it was recorded, when it was paid); otherwise the current time. Don't turn words like "lunch" or "morning" into a guessed time. A time that's part of the content (an appointment time) is plain text. Don't change the time format on lines the user wrote by hand
+- **Source links**: when an item comes from a source note (a recording transcript, a receipt), link the time to it. Use angle brackets because file names often contain spaces: ``- [`10:21`](<음성 20261113.md#음성 261113_102154>) 🥕 Sold the old bike``. Task lines put the link after the checkbox: ``- [ ] [`19:30`](<음성 20261118.md#음성 261118_193012>) 19:00 Dinner with a friend ⏳ 2026-11-26``
 - **Same source again**: a source may be processed again after it's corrected. If a line already links the same source for the same item, update that line instead of adding another
 - **Memo emoji**: pick exactly one per memo from the vault's list, or from [`references/memo-emoji.md`](references/memo-emoji.md) when the vault has none; read the list before choosing. Pick by what the thing is, not by a word in it. If nothing fits, use the list's fallback emoji. Never invent one that isn't in the list. Tasks and sub-items carry no emoji
 - **Follow-ups**: a later memo on the same topic the same day goes under the first one as a tab-indented sub-item, without an emoji
@@ -101,22 +101,22 @@ To find the task, search the journal for open lines that match. If several match
 
 ## Reading
 
-Some requests only read the notes: "오늘 뭐 했지", "시간 날 때 할 일 보여 줘", "보류한 거 뭐 있어". Search the journal, list the matching lines ordered by note date, and don't edit anything. Link the notes you used.
+Some requests only read the notes: "what did I do today", "show my someday tasks", "what's on hold". Search the journal, list the matching lines ordered by note date, and don't edit anything. Link the notes you used.
 
 ## Reply
 
 Say in a line or two which note and section changed and what went in. If you added a dated item, mention the date so the user can put it on their calendar too.
 
-Example, after "점심 칼국수 먹었고, 다음 주 화요일 3시에 치과 예약했어" sent at 13:05:
+Example, after "Had noodle soup for lunch, and booked the dentist for next Tuesday at 3" sent at 13:05:
 
 ```
-## 🚧 작업
+## 🚧 Tasks
 
-- [ ] 15:00 치과 ⏳ 2026-11-24
+- [ ] 15:00 Dentist ⏳ 2026-11-24
 
-## 📃 메모
+## 📃 Notes
 
-- `13:05` 🍜 점심 칼국수
+- `13:05` 🍜 Noodle soup for lunch
 ```
 
-> 11-17 일일노트에 적었어요. 작업: 치과(11-24 15:00), 메모: 점심 칼국수. 치과는 달력에도 넣어 두세요.
+> Added to the 11-17 daily note. Tasks: dentist (11-24 15:00). Notes: noodle soup for lunch. Put the dentist on your calendar too.
