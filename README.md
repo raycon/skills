@@ -47,9 +47,9 @@ npx skills update -p -y <스킬 이름>
 Markdown Vault(Obsidian 등)에서 쓰는 범용 스킬. 각 스킬은 노트 한 종류만 다루고 다른 스킬을 부르지 않는다. 어떤 요청에 어떤 스킬을 어떤 순서로 쓸지는 Vault의 `CLAUDE.md`에 적는다. 각 스킬은 Vault의 `CLAUDE.md`, 템플릿, 기존 노트에서 규칙을 먼저 읽고, 없을 때만 기본값을 쓴다.
 
 ```markdown
-## 요청 흐름
+## 처리 순서
 
-| 요청 | 스킬 |
+| 요청 | 처리 순서 |
 | --- | --- |
 | 한 일, 할 일, 일정 | `daily-note` |
 | 영수증 사진 | `receipt` → `daily-note`에 구매 줄 |
