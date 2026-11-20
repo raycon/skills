@@ -1,16 +1,16 @@
-# Memo emoji
+# 메모 이모지
 
-The default list for daily-note memos. A vault that defines its own list uses that instead.
+일일노트 메모의 기본 이모지 목록이다. Vault가 자기 목록을 정해 두었으면 그것을 쓴다.
 
-## How to pick
+## 고르는 법
 
-- One emoji per memo, from the list below. If nothing fits, use ❓. Never make up a new one
-- Pick by what the thing is, not by a word in it
-- Food: pick by the kind of food. Everything eaten at one meal goes on one line, with the emoji of the main dish. If the user cooked it, use 👨🏻‍🍳 instead of the food. Use 🍽️ or ☕ only when the point is going to the restaurant or café itself
-- Things done for the family come from 역할; things the user enjoyed come from 컨텐츠 (playing with the kids 🦸🏻‍♂️, playing a game themselves 🎮)
-- ℹ️ marks the pointer memo for knowledge recorded in a topic note
+- 메모마다 하나만 아래 목록에서 고른다. 맞는 게 없으면 ❓를 쓰고, 목록에 없는 이모지는 만들지 않는다
+- 메모에 나온 낱말이 아니라 그 일이 무엇인지로 고른다
+- 먹은 것은 음식 종류로 고른다. 한 끼에 먹은 것은 한 줄로 쓰고 주메뉴의 이모지를 쓴다. 직접 요리했으면 음식 대신 👨🏻‍🍳를 쓴다. 식당이나 카페에 간 일 자체를 남길 때만 🍽️, ☕를 쓴다
+- 가족을 위해 맡아 한 일은 역할에서, 내가 즐긴 것은 컨텐츠에서 고른다 (예: 아이와 놀아 줌 🦸🏻‍♂️, 내가 게임함 🎮)
+- ℹ️는 주제 노트에 기록한 지식을 가리키는 한 줄에 쓴다
 
-## List
+## 목록
 
 - 음식
 	- 🍚 밥, 한식

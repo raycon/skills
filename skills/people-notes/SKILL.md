@@ -1,64 +1,65 @@
 ---
 name: people-notes
-description: Keep one note per person in a Markdown vault (Obsidian or similar), like a personal CRM. It creates person notes from the template, logs calls, messages, meetings and life events, keeps lasting facts with the date they were learned, tracks last contact and follow-ups, and resolves who is meant when names collide. Use this skill whenever the user talks about contact with someone or something they learned about a person, in any wording ("talked to mom", "Minsu changed jobs", "her birthday is March 2", "ask him next time", "sent condolence money", "ran into an old friend"), when a phone call needs to be logged, or when they ask about someone ("when did I last talk to Minsu?", "who haven't I talked to in a while?").
+description: >-
+  Markdown Vault(Obsidian 등)에서 사람마다 노트 하나를 개인 CRM처럼 관리한다. 템플릿으로 사람 노트를 만들고, 통화, 메시지, 만남, 경조사를 기록하고, 오래 유효한 사실은 알게 된 날짜와 함께 남기고, 마지막 연락과 다음에 할 일을 관리하고, 이름이 겹치면 누구인지 가린다. 사용자가 누군가와의 연락이나 사람에 대해 알게 된 것을 말하면 표현과 상관없이 이 스킬을 쓴다("엄마랑 통화했어", "민수 이직했대", "지은이 생일 3월 2일이야", "다음에 만나면 물어볼 것", "부의금 보냈어", "오랜만에 지훈이 만났어"). 통화를 기록해야 할 때, 누군가에 대해 물을 때도 쓴다("민수랑 마지막으로 연락한 게 언제지?", "연락 뜸한 사람 누구야").
 ---
 
-# People Notes
+# 사람 노트
 
-Keep what the user knows about the people in their life in one place per person, so that before the next call or visit they can see what was talked about last time, what changed, and what they promised.
+사용자가 주변 사람에 대해 아는 것을 사람마다 한곳에 모은다. 다음에 통화하거나 만나기 전에, 지난번에 무슨 이야기를 했는지, 무엇이 바뀌었는지, 무엇을 약속했는지 볼 수 있게 한다.
 
-A person note is useful only if it stays trustworthy. So it holds facts the user actually learned, keeps old facts instead of overwriting them, and never guesses who someone is.
+사람 노트는 믿을 수 있어야 쓸모가 있다. 그래서 사용자가 실제로 알게 된 사실만 담고, 예전 사실을 덮어쓰지 않고 남기며, 누구인지 짐작하지 않는다.
 
-## Learn the vault's conventions first
+## Vault 규칙부터 확인한다
 
-Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar), the person template, and a couple of existing person notes. Follow them over these defaults:
+Vault의 프로젝트 지침(`CLAUDE.md`, `AGENTS.md` 등), 사람 템플릿, 기존 사람 노트 두어 개를 읽고, 아래 기본값보다 그것을 따른다.
 
-| Thing | Default |
+| 항목 | 기본값 |
 | --- | --- |
-| Location | `People/<name>.md`, created from the person template if one exists |
-| Frontmatter | `aliases` (nicknames, titles, other spellings), `birthday: "MM-DD"`, `last_contact: "YYYY-MM-DD"`, tags `people/<relation>` (`people/family`, `people/work`) |
-| Sections | Summary, Relationship, Info (Work, Life, Interests, Dates), Log, Next contact |
+| 위치 | `People/<이름>.md`. 사람 템플릿이 있으면 그것으로 만든다 |
+| frontmatter | `aliases`(별명, 호칭, 다른 표기), `birthday: "MM-DD"`, `last_contact: "YYYY-MM-DD"`, 태그 `people/<관계>`(`people/family`, `people/work`) |
+| 섹션 | 요약, 관계, 정보(일, 생활, 관심사, 기념일), 기록, 다음 연락 |
 
-## Find the right person
+## 누구인지 찾는다
 
-1. Look for an existing note by file name, then by `aliases`.
-2. If two people could match, or a name is shared, ask who is meant before writing. Writing into the wrong person's note is worse than writing nothing.
-3. If you can't ask (an automated transcript) and the person can't be identified, don't touch any person note. Say so in the reply.
-4. Organizations (a clinic, a shop, a company) don't get person notes. Leave their information out and say so in the reply.
+1. 파일 이름, 그다음 `aliases`로 기존 노트를 찾는다.
+2. 두 사람이 맞을 수 있거나 이름이 같은 사람이 있으면, 쓰기 전에 누구인지 묻는다. 엉뚱한 사람의 노트에 쓰는 것은 아무것도 안 쓰는 것보다 나쁘다.
+3. 물어볼 수 없고(자동으로 들어온 전사) 누구인지 알 수 없으면, 어떤 사람 노트도 건드리지 않고 답에서 알린다.
+4. 기관(병원, 가게, 회사)은 사람 노트를 만들지 않는다. 그 정보는 빼고 답에서 알린다.
 
-## Create a person
+## 사람 노트를 만든다
 
-- The file name is the name the user uses for them. A title or nickname is fine when that's how they're saved or called (`Mom.md`, `Uncle Joe.md`). Put other names in `aliases`
-- When a second person with the same name appears, add where each was first met in parentheses (`Alex Kim (work).md`, `Alex Kim (college).md`). Renaming an existing note needs the user's confirmation, and links to it must be updated after the rename
-- Fill only what you know. Leave the rest of the template empty
+- 파일 이름은 사용자가 그 사람을 부르는 이름이다. 그렇게 저장했거나 부르면 호칭이나 별명도 된다(`엄마.md`, `민수형.md`). 다른 이름은 `aliases`에 넣는다
+- 이름이 같은 두 번째 사람이 생기면 처음 만난 곳을 괄호로 붙인다(`김민수 (회사).md`, `김민수 (대학).md`). 이미 있는 노트의 이름을 바꾸려면 사용자의 확인을 받고, 바꾼 뒤에는 그 노트로 가는 링크도 고친다
+- 아는 것만 채운다. 나머지는 템플릿대로 비워 둔다
 
-## What goes where
+## 어디에 쓰나
 
-| Section | Content |
+| 섹션 | 내용 |
 | --- | --- |
-| Summary | Who they are in one line (wife, former team lead) |
-| Relationship | When and where they first met, who introduced them, mutual friends. Link people as `[[name]]` |
-| Info | Facts that stay true for a while, without checkboxes or source links. Facts that never change (family relations, school) have no date. Facts that can change (job, neighborhood, tastes) start with the date they were learned in backticks: ``- `2026-11-13` Marketing at Acme``. When one changes, add a new line and keep the old one |
-| Log | Calls, messages, meetings, events, in date order: `- YYYY-MM-DD <icon> <kind>`, with the details as sub-items |
-| Next contact | Things to ask, favors and promises, as `- [ ]`. Mark `[x]` when done |
+| 요약 | 어떤 사람인지 한 줄(아내, 전 회사 팀장) |
+| 관계 | 언제 어디서 처음 만났는지, 누가 소개했는지, 공통 지인. 사람은 `[[이름]]`으로 링크한다 |
+| 정보 | 한동안 유효한 사실. 체크박스나 원본 링크는 쓰지 않는다. 바뀌지 않는 사실(가족 관계, 학교)에는 날짜를 붙이지 않는다. 바뀔 수 있는 사실(직장, 사는 곳, 취향)은 알게 된 날짜를 백틱으로 감싸 앞에 쓴다: ``- `2026-11-13` OO회사 마케팅팀``. 바뀌면 새 줄을 더하고 이전 줄은 남긴다 |
+| 기록 | 통화, 메시지, 만남, 경조사를 날짜 순으로: `- YYYY-MM-DD <아이콘> <종류>`, 자세한 내용은 하위 항목으로 |
+| 다음 연락 | 물어볼 것, 부탁, 약속을 `- [ ]`로. 하면 `[x]`로 바꾼다 |
 
-Default log icons: ☎️ call, 💬 message, 🤝 meeting, 🚑 medical visit, 🎁 gift or celebration, 🎗️ condolence. If there's a source recording, link it on the icon with the time as the label: `- 2026-11-13 ☎️[[통화 김민수_261113_143012|14:30]] call`.
+기본 기록 아이콘: ☎️ 통화, 💬 메시지, 🤝 만남, 🚑 진료, 🎁 선물이나 축하, 🎗️ 조의. 원본 녹음이 있으면 아이콘에 링크하고 시각을 표시 이름으로 쓴다: `- 2026-11-13 ☎️[[통화 김민수_261113_143012|14:30]] 통화`.
 
-After adding a log entry, set `last_contact` to that date if it's later than the current one.
+기록을 더한 뒤, 그 날짜가 지금 `last_contact`보다 나중이면 `last_contact`를 그 날짜로 바꾼다.
 
-## Calls from transcripts
+## 통화 전사
 
-- Summarize the call into the Log entry's sub-items. Promises and things to ask next time go to Next contact
-- Transcripts usually have no speaker labels, so it can be unclear who said what. Put a fact in Info only when it's clearly about this person. Otherwise keep it in the Log sub-items
+- 통화 내용은 기록 항목의 하위 항목으로 요약한다. 약속과 다음에 물어볼 것은 다음 연락에 쓴다
+- 전사에는 보통 누가 말했는지 표시가 없어서, 누구의 말인지 애매할 수 있다. 분명히 이 사람에 관한 사실만 정보에 쓰고, 나머지는 기록의 하위 항목에 둔다
 
-## Privacy
+## 개인정보
 
-Don't store phone numbers, addresses, or ID numbers. Keep only what helps the relationship: what's going on in their life, what they care about, what was promised. Link related notes both ways (a condolence gift note and the person, for example).
+전화번호, 주소, 신분증 번호는 저장하지 않는다. 관계에 도움이 되는 것만 남긴다. 그 사람의 요즘 일, 관심사, 약속한 것이다. 관련 노트는 서로 링크한다(예: 부의금 노트와 그 사람).
 
-## Questions about people
+## 사람에 대한 질문
 
-For when they last talked to someone, read `last_contact` and the latest Log entries. For who they haven't talked to in a while, list person notes by `last_contact`, oldest first. These requests only read; don't edit anything.
+마지막으로 연락한 때를 물으면 `last_contact`와 최근 기록을 읽는다. 연락이 뜸한 사람을 물으면 사람 노트를 `last_contact`가 오래된 순으로 보여 준다. 이런 요청은 읽기만 하고 아무것도 고치지 않는다.
 
-## Reply
+## 답
 
-Say which person note changed and what was added (log, info, next contact). Include a one-line summary of the contact and any follow-up with a fixed date, so they can be logged elsewhere (a daily log, a task list). Ask about anyone you couldn't identify.
+어느 사람 노트가 바뀌었고 무엇을 더했는지(기록, 정보, 다음 연락) 알린다. 다른 곳(일일 기록, 작업 목록)에 남길 수 있게, 연락을 한 줄로 요약한 것과 날짜가 정해진 후속 일도 함께 알린다. 누구인지 알 수 없었던 사람은 묻는다.

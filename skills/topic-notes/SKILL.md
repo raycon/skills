@@ -1,71 +1,71 @@
 ---
 name: topic-notes
 description: >-
-  Keep knowledge in topic notes in a Markdown vault (Obsidian or similar), apart from the daily log. It records information (prices, sizes, conditions, how-tos) and the user's own judgments (conclusions, preferences, decisions, lessons) in the note for that subject, creates notes named by subject, dates each entry, keeps old values when they change, and checks the vault for broken links and stray or overlapping notes. Use this skill whenever something worth finding again comes up, in any wording or from any source: a price comparison, a size that fit, a how-to, advice, a decision and its reason, a link to keep ("save this", "I compared the phone plans", "next time bring water"); when knowledge turns up while handling something else (a recording, a review); when the user asks what their notes say ("where was it cheapest?"); or when they ask to check or tidy the vault.
+  Markdown Vault(Obsidian 등)에서 지식을 일일 기록과 따로 주제 노트에 모은다. 정보(가격, 사이즈, 조건, 방법)와 사용자가 내린 판단(결론, 취향, 결정, 교훈)을 그 주제의 노트에 기록하고, 노트가 없으면 주제 이름으로 만들고, 항목마다 날짜를 붙이고, 값이 바뀌어도 이전 줄을 남긴다. 요청하면 깨진 링크, 흩어지거나 겹치는 노트를 점검한다. 다시 찾을 만한 것이 나오면 말투나 출처와 상관없이 이 스킬을 쓴다: 가격 비교, 맞았던 사이즈, 방법, 조언, 결정과 그 이유, 남겨 둘 링크("이거 저장해 줘", "요금제 비교해 봤는데", "다음엔 생수 챙겨야겠다"). 녹음이나 회고를 처리하다 지식이 나왔을 때, 노트에 무엇이 있는지 물을 때("어디가 제일 쌌지?"), Vault를 점검하거나 정리해 달라고 할 때도 쓴다.
 ---
 
-# Topic Notes
+# 주제 노트
 
-A vault holds two kinds of things. **Events** are what happened, how it felt, and what's still to do; they go in the daily log. **Knowledge** is what the user will want to find again; it goes in a topic note, one per subject, so it stays together and current. This skill handles the knowledge.
+Vault에는 두 가지가 있다. **사건**은 있었던 일, 그때의 느낌, 아직 할 일이고, 일일 기록에 들어간다. **지식**은 사용자가 나중에 다시 찾을 것이고, 주제마다 하나씩 있는 주제 노트에 들어가 한데 모이고 최신으로 유지된다. 이 스킬은 지식을 다룬다.
 
-Knowledge left in a daily note is effectively lost: nobody rereads old days to find a price. So file it when it arrives, not later.
+일일노트에 남은 지식은 사실상 잃어버린 것이다. 가격 하나를 찾으려고 지난 날짜를 다시 읽는 사람은 없다. 그래서 지식은 나중이 아니라 들어올 때 기록한다.
 
-## Learn the vault's conventions first
+## Vault 규칙부터 확인한다
 
-Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar) and a few existing topic notes. Follow them over these defaults:
+Vault의 프로젝트 지침(`CLAUDE.md`, `AGENTS.md` 등)과 기존 주제 노트 몇 개를 읽고, 아래 기본값보다 그것을 따른다.
 
-| Thing | Default |
+| 항목 | 기본값 |
 | --- | --- |
-| Topic notes | Notes outside the journal and the raw archive, in the vault's folders (PARA or similar) |
-| Frontmatter | `created: "YYYY-MM-DD"` and `tags`, in the vault's existing format |
-| Entry date | `` `YYYY-MM-DD` `` at the start of the line: the day it was learned |
-| Web sources | A `## Sources` section at the end of the note, with the URLs |
+| 주제 노트 | 일일노트와 원본 보관소 밖, Vault의 폴더(PARA 등)에 있는 노트 |
+| frontmatter | `created: "YYYY-MM-DD"`와 `tags`. Vault의 기존 형식을 따른다 |
+| 항목 날짜 | 줄 맨 앞의 `` `YYYY-MM-DD` ``. 알게 된 날이다 |
+| 웹 출처 | 노트 끝의 `## 참고` 섹션에 URL을 남긴다 |
 
-## Information and judgment
+## 정보와 판단
 
-Knowledge comes in two kinds, and they are handled differently:
+지식은 두 가지이고, 다루는 법이 다르다.
 
-- **Information** is what anyone could check: a price, a size chart, a condition, a how-to. Summarize and rewrite it freely. Record it when it would be hard to find again or it fed a decision; skip what a quick search would find anyway
-- **Judgment** is the user's own: a conclusion, a preference, a decision and its reason, a lesson ("size L fits best", "bring water next time"). Record it even when it's a single line, in the user's words. Nobody else can supply it, and rewording it changes what they concluded
-- Record a judgment only when the user stated one. A feeling without a conclusion ("felt refreshed") is an event and stays in the daily note
+- **정보**는 누가 확인해도 같은 것이다. 가격, 사이즈표, 조건, 방법 같은 것이다. 요약하고 다시 써도 된다. 다시 찾기 어렵거나 결정에 쓰였을 때 기록하고, 검색하면 금방 다시 나오는 것은 기록하지 않는다
+- **판단**은 사용자 자신의 것이다. 결론, 취향, 결정과 그 이유, 교훈 같은 것이다("L이 딱 맞음", "다음엔 생수 챙기기"). 한 줄이라도 기록하고, 사용자의 말 그대로 쓴다. 다른 누구도 채울 수 없고, 말을 바꾸면 사용자가 내린 결론이 달라진다
+- 판단은 사용자가 말한 것만 기록한다. 결론 없이 느낌만 있으면("개운했다") 사건이므로 일일노트에 남긴다
 
-The most useful entries pair the two: a size chart and the size that actually fit, three prices and the one they picked. Keep such pairs next to each other.
+가장 쓸모 있는 항목은 둘이 짝을 이룬 것이다. 사이즈표와 실제로 맞았던 사이즈, 가격 세 개와 그중 고른 것 같은 짝은 나란히 둔다.
 
-## Find or create the note
+## 노트를 찾거나 만든다
 
-1. **Search first**: file names, aliases, headings, then content. Adding to a broader existing note beats creating a narrow new one; a vault of one-fact notes is as hard to use as no notes.
-2. **Create only when nothing fits.** Name the note by the subject the user would search for: `Wireless earbuds`, not `Earbud price comparison November`. Place it by the vault's classification (in PARA: a Project if it has a deadline or end, an Area if it's ongoing, a Resource for reference). If unsure, put it in the inbox and say so.
-3. **People are not topics.** What the user learns about a person belongs in that person's note, not here.
+1. **먼저 찾는다.** 파일 이름, 별칭, 제목, 본문 순으로 찾는다. 좁은 새 노트를 만드는 것보다 넓은 기존 노트에 더하는 편이 낫다. 사실 하나짜리 노트만 잔뜩 있는 Vault는 노트가 없는 것만큼 쓰기 어렵다.
+2. **맞는 노트가 없을 때만 만든다.** 이름은 사용자가 검색할 주제로 짓는다. `무선 이어폰`은 되고, `이어폰 가격 비교 11월`은 안 된다. 위치는 Vault의 분류를 따른다. PARA라면 마감이나 끝이 있으면 Project, 계속 이어지면 Area, 참고용이면 Resource다. 애매하면 inbox에 두고 알린다.
+3. **사람은 주제가 아니다.** 사람에 대해 알게 된 것은 여기가 아니라 그 사람의 노트에 속한다.
 
-## Write the entry
+## 항목을 쓴다
 
-- Date it with the day it was learned. For a recording or a receipt, that's the day it happened, not today
-- Put it under the heading it belongs to. Add headings once a note grows into parts
-- When a value or a judgment changes, add a new dated line and keep the old one. Both were true at their time, and old prices are often what the user is comparing against
-- Name the source when it isn't the user: URLs go in the sources section; something heard names who said it (`store clerk`, `[[Alex]]`)
+- 날짜는 알게 된 날이다. 녹음이나 영수증에서 왔으면 오늘이 아니라 그 일이 있었던 날이다
+- 항목은 속한 제목 아래에 둔다. 노트가 커져 여러 부분으로 나뉘면 제목을 더한다
+- 값이나 판단이 바뀌면 날짜를 붙인 새 줄을 더하고 이전 줄은 남긴다. 둘 다 그때는 맞았고, 사용자가 비교하는 대상이 이전 가격인 경우가 많다
+- 사용자가 아닌 곳에서 왔으면 출처를 밝힌다. URL은 `## 참고`에, 들은 것은 누가 말했는지 쓴다(`매장 직원`, `[[김민수]]`)
 
-## Tidy a note
+## 노트를 정리한다
 
-A topic note is the agent's to keep in order. Reorder entries, group them under headings, merge duplicates, add a short summary at the top. Rewrite information freely; move judgments without changing their words. Keep every entry: tidying changes the shape, not the record.
+주제 노트는 에이전트가 정돈해 둔다. 항목 순서를 바꾸고, 제목 아래로 묶고, 중복을 합치고, 맨 위에 짧은 요약을 둔다. 정보는 마음껏 다시 쓰고, 판단은 말을 바꾸지 않고 옮긴다. 항목은 하나도 지우지 않는다. 정리는 모양을 바꾸지 기록을 바꾸지 않는다.
 
-Changes that span notes (merging two notes, moving or renaming one) touch links elsewhere. Show the plan and get the user's go-ahead first.
+여러 노트에 걸친 변경(두 노트 합치기, 노트 옮기기, 이름 바꾸기)은 다른 곳의 링크에 영향을 준다. 계획을 먼저 보여 주고 사용자의 확인을 받는다.
 
-## Answer from the notes
+## 노트에서 답한다
 
-For a question, search the topic notes first and link the notes the answer came from. If you look something up elsewhere to answer it, record what you found in the fitting topic note and say where it went.
+질문을 받으면 주제 노트를 먼저 찾고, 답에 쓴 노트를 링크한다. 답하려고 다른 곳에서 찾아본 것이 있으면 맞는 주제 노트에 기록하고 어디에 넣었는지 알린다.
 
-## Check the vault
+## Vault를 점검한다
 
-When asked to check the vault, look for these and report them as a list:
+점검을 요청받으면 다음을 찾아 목록으로 보고한다.
 
-- Broken links: `[[...]]` targets that don't exist
-- Notes without frontmatter, or without the `created` date that queries rely on
-- Empty notes, and notes left in the inbox for more than two weeks
-- Projects with no edits and no open tasks linking them for a month: done, or stalled?
-- Topic notes on the same subject that could be merged
+- 깨진 링크: 대상이 없는 `[[...]]`
+- frontmatter가 없거나, 쿼리가 쓰는 `created` 날짜가 없는 노트
+- 빈 노트, inbox에 2주 넘게 남은 노트
+- 한 달 동안 고친 적도 없고 그 노트를 링크한 열린 작업도 없는 Project: 끝났는지, 멈췄는지
+- 같은 주제라서 합칠 만한 주제 노트
 
-Propose a fix for each, and change only what the user approves.
+항목마다 고칠 방법을 제안하고, 사용자가 승인한 것만 고친다.
 
-## Reply
+## 답
 
-Say which topic note changed, whether it's new, and what went in. Name new notes explicitly, so the vault never grows without the user noticing. Include a one-line summary and the note's link, so the entry can be pointed to from elsewhere (a daily log, for example).
+어느 주제 노트가 바뀌었는지, 새 노트인지, 무엇을 넣었는지 알린다. 새 노트는 이름을 분명히 말해서, 사용자가 모르는 사이에 Vault가 늘지 않게 한다. 다른 곳(일일 기록 등)에서 이 항목을 가리킬 수 있게 한 줄 요약과 노트 링크도 함께 돌려준다.

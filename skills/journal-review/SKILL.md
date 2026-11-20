@@ -1,90 +1,90 @@
 ---
 name: journal-review
 description: >-
-  Run a daily or weekly review on Markdown daily notes (Obsidian or similar). It asks the user about one topic at a time, offers answer options taken from their own notes, and writes the answers back into the notes. Use this skill whenever the user asks to review or reflect on a day or a week, in any wording: "review today", "how did yesterday go", "wrap up the week", "KPT", "daily review", "weekly review", "retro". Also use it when the user wants to sort through unfinished tasks spread across journal notes, even if they don't say "review".
+  Markdown 일일노트(Obsidian 등)로 하루 회고와 주간 회고를 한다. 주제마다 하나씩 묻고, 사용자의 노트에서 뽑은 답 선택지를 주고, 답을 노트에 적는다. 하루나 한 주를 돌아보자는 요청이면 표현과 상관없이 이 스킬을 쓴다("회고", "어제 회고", "오늘 돌아보기", "하루 정리", "주간 회고", "이번 주 정리", "KPT", "retro"). 여러 일일노트에 흩어진 끝나지 않은 작업을 정리하고 싶어 할 때도, "회고"라는 말이 없어도 쓴다.
 ---
 
-# Journal Review
+# 회고
 
-Help the user reflect on a day or a week using what their journal already says. Then record their answers where they belong.
+일일노트에 이미 적힌 기록으로 사용자가 하루나 한 주를 돌아보게 돕고, 답을 제자리에 적는다.
 
-Most people don't skip reviews because they have nothing to say. They skip them because a blank "What went well?" takes effort to answer. This skill makes the review quick: first show what happened, then ask one short question per topic with options taken from the notes. The user can pick an option, adjust it, or type their own answer.
+회고를 건너뛰는 건 할 말이 없어서가 아니다. 빈칸으로 된 "무엇이 좋았나?"에 답하는 데 힘이 들기 때문이다. 이 스킬은 회고를 빠르게 만든다. 먼저 있었던 일을 보여 주고, 주제마다 노트에서 뽑은 선택지와 함께 짧은 질문을 하나씩 한다. 사용자는 선택지를 고르거나, 고쳐 쓰거나, 직접 답한다.
 
-## Learn the vault's conventions first
+## Vault 규칙부터 확인한다
 
-Vaults differ. Before reading any notes, look for the conventions this vault already uses, and follow them over the defaults below:
+Vault마다 다르다. 노트를 읽기 전에 이 Vault가 이미 쓰는 규칙을 찾고, 아래 기본값보다 그것을 따른다.
 
-- Project instructions (`CLAUDE.md`, `AGENTS.md`, or similar) usually say where daily notes live, how files are named, and which sections they have
-- The daily note template shows the section headings and the empty placeholders (`- `, `- [ ] `, `Keep: `) that get filled in
-- A few recent daily notes show how the user actually writes
+- 프로젝트 지침(`CLAUDE.md`, `AGENTS.md` 등)에는 보통 일일노트 위치, 파일 이름, 섹션이 있다
+- 일일노트 템플릿에는 섹션 제목과 채워질 빈 자리표시 줄(`- `, `- [ ] `, `Keep: `)이 있다
+- 최근 일일노트 몇 개를 보면 사용자가 실제로 어떻게 쓰는지 알 수 있다
 
-If you can't find a convention, use these defaults:
+규칙을 찾지 못하면 이 기본값을 쓴다.
 
-| Thing | Default |
+| 항목 | 기본값 |
 | --- | --- |
-| Daily note | `journal/YYYY/YYYY-MM-DD.md`, created from the daily note template if one exists |
-| Sections | Highlight, Tasks, Notes, Gratitude, Review |
-| Review block | `Keep:`, `Problem:`, `Try:` lines |
-| Task states | `[ ]` todo, `[/]` in progress, `[x]` done, `[-]` cancelled, `[>]` on hold |
-| Task dates | Obsidian Tasks emoji at the end of the line: `⏳` scheduled, `✅` done, `❌` cancelled, in that order |
+| 일일노트 | `journal/YYYY/YYYY-MM-DD.md`. 템플릿이 있으면 그것으로 만든다 |
+| 섹션 | 하이라이트, 작업, 메모, 감사, 리뷰 |
+| 리뷰 블록 | `Keep:`, `Problem:`, `Try:` 줄 |
+| 작업 상태 | `[ ]` 할 일, `[/]` 진행 중, `[x]` 완료, `[-]` 취소, `[>]` 보류 |
+| 작업 날짜 | 줄 끝의 Obsidian Tasks 이모지. `⏳` 예정, `✅` 완료, `❌` 취소 순서 |
 
-Older notes may follow an older structure. When you write into an existing note, keep that note's structure as it is.
+예전 노트는 구조가 다를 수 있다. 이미 있는 노트에 쓸 때는 그 노트의 구조를 그대로 둔다.
 
-## How to ask
+## 묻는 법
 
-Each topic gets its own question. A topic the user can skip always has a "none" option, so skipping doesn't feel like failing.
+주제마다 질문을 하나씩 한다. 건너뛸 수 있는 주제에는 늘 "없음" 선택지를 넣어서, 건너뛰는 게 실패처럼 느껴지지 않게 한다.
 
-- **Options come from the record.** Use the user's own notes, especially lines where they already judged something ("that went well", "next time I'll do it this way"). In the description, say where each option comes from. Options are candidates for the user to choose from. Never put a judgment in an option that the notes don't support.
-- **With a question tool** (such as `AskUserQuestion`): ask up to 4 questions per call, each with 2 to 4 options. The tool adds a free-text "Other" choice by itself, so don't add one. If there are more than 4 topics, make another call.
-- **Without one** (chat bots, messaging apps): send all the questions in one message as numbered lists, and let the user answer briefly, for example "1-2, 2-1, 3: my own answer".
+- **선택지는 기록에서 뽑는다.** 사용자의 노트, 특히 이미 평가한 줄("좋았다", "다음엔 이렇게 해야지")을 쓴다. 설명에는 각 선택지가 어디서 왔는지 적는다. 선택지는 사용자가 고를 후보다. 노트가 뒷받침하지 않는 평가를 선택지에 넣지 않는다.
+- **질문 도구가 있으면**(`AskUserQuestion` 등): 한 번에 질문 4개까지, 질문마다 선택지 2개에서 4개로 묻는다. 도구가 직접 입력하는 "기타"를 알아서 붙이므로 따로 넣지 않는다. 주제가 4개보다 많으면 한 번 더 묻는다.
+- **질문 도구가 없으면**(챗봇, 메신저): 질문을 모두 번호 목록으로 한 메시지에 보내고, 짧게 답하게 한다. 예: "1-2, 2-1, 3: 직접 쓴 답".
 
-## Daily review
+## 하루 회고
 
-1. **Pick the day.** "Review yesterday" means yesterday; "review" or "review today" means today. If a date is named, use that date.
-2. **Gather the record.** Read that day's tasks and notes. Also search the other journal notes for tasks finished that day (`✅ <that date>`). People often finish older tasks without writing anything new. Then open the previous daily note and check whether it has a Try.
-3. **Show a short summary.** In a few lines, show what happened, what got done, and what is still open. This is a reminder for the user, not an assessment.
-4. **Ask, in this order:**
-   - The previous day's Try, only if it had one: did they try it, and how did it go?
-   - The day's highlight, only if it's empty
-   - Keep: what went well, what to keep doing
-   - Problem: what got in the way. Ask about the obstacle, not about tasks left undone. "Meetings ate my focus time" helps more than "didn't finish the report"
-   - Try: one concrete action to test next time, one that solves a Problem or strengthens a Keep. To-do items go in the tasks section, not here
-   - Gratitude
-   - The next day's highlight: take options from tasks scheduled for that day or still open
-5. **Write the answers, then say what you wrote and where.**
-   - Keep the user's wording. Trim it lightly to match the note's style, and add nothing they didn't say
-   - The result of the previous Try goes into this day's Keep or Problem. Don't edit the previous note
-   - One item goes on the same line (`Keep: ...`). Several items go below the line as a `- ` list
-   - The next day's highlight goes into the next day's note. If that note doesn't exist, create it from the template
-   - When you fill a section, remove its empty placeholder. Leave sections the user skipped exactly as the template has them
+1. **날짜를 정한다.** "어제 회고"는 어제, "회고"나 "오늘 회고"는 오늘이다. 날짜를 말하면 그 날짜다.
+2. **기록을 모은다.** 그날의 작업과 메모를 읽는다. 다른 일일노트에서 그날 끝낸 작업(`✅ <그 날짜>`)도 찾는다. 예전 작업을 끝내고 아무것도 새로 안 적는 경우가 많다. 그리고 전날 노트에 Try가 있는지 본다.
+3. **짧게 요약해 보여 준다.** 몇 줄로 있었던 일, 끝낸 일, 아직 남은 일을 보여 준다. 평가가 아니라 사용자가 떠올리게 돕는 것이다.
+4. **이 순서로 묻는다.**
+   - 전날의 Try. 있을 때만, 해 봤는지, 어땠는지
+   - 그날의 하이라이트. 비어 있을 때만
+   - Keep: 잘된 것, 계속할 것
+   - Problem: 방해가 된 것. 못 끝낸 작업이 아니라 걸림돌을 묻는다. "보고서를 못 끝냄"보다 "회의가 집중 시간을 잡아먹음"이 더 쓸모 있다
+   - Try: 다음에 시험해 볼 구체적인 행동 하나. Problem을 풀거나 Keep을 키우는 것이다. 할 일은 여기가 아니라 작업 섹션에 쓴다
+   - 감사
+   - 다음 날의 하이라이트: 그날 예정이거나 아직 열린 작업에서 선택지를 뽑는다
+5. **답을 적고, 무엇을 어디에 적었는지 알린다.**
+   - 사용자의 말을 그대로 둔다. 노트 문체에 맞게 가볍게 다듬되, 말하지 않은 것은 더하지 않는다
+   - 전날 Try의 결과는 그날의 Keep이나 Problem에 쓴다. 전날 노트는 고치지 않는다
+   - 항목이 하나면 같은 줄에(`Keep: ...`), 여럿이면 그 줄 아래 `- ` 목록으로 쓴다
+   - 다음 날의 하이라이트는 다음 날 노트에 쓴다. 그 노트가 없으면 템플릿으로 만든다
+   - 섹션을 채우면 그 섹션의 빈 자리표시 줄을 지운다. 사용자가 건너뛴 섹션은 템플릿 그대로 둔다
 
-Example summary and review block:
-
-```
-11-18 (Wed)
-- Done: dentist checkup, returned the library book
-- Notes: walk after lunch, "cleared my head"
-- Still open: drop off the dry cleaning
-```
+요약과 리뷰 블록의 예:
 
 ```
-Keep: a 10-minute walk after lunch
-Problem: a long afternoon meeting left no time for the report
-Try: write the report first thing in the morning
+11-18 (수)
+- 한 일: 치과 정기 검진, 책 반납
+- 메모: 점심 먹고 산책, "머리가 맑아졌다"
+- 남은 작업: 세탁소 맡기기
 ```
 
-## Weekly review
+```
+Keep: 점심 먹고 10분 산책
+Problem: 오후 회의가 길어져 보고서를 못 씀
+Try: 오전에 보고서부터 쓰기
+```
 
-The goal is to leave the week with a clean task list and no useful information buried in daily notes.
+## 주간 회고
 
-1. **Open tasks.** Collect `[ ]` and `[/]` tasks from the journal, ordered by note date. For each one, ask whether to keep it (leave it as is), mark it done (`[x]` + `✅ <date>`), or drop it (`[-]` + `❌ <date>`). Use today's date unless the user gives another. Edit the task in its original note. Don't copy it into a new note. Leave tasks the user doesn't answer as they are.
-2. **On hold and someday tasks.** Show `[>]` tasks and any "someday" tasks the vault uses, and ask which ones to take on this week. Change those to `[ ]` in place.
-3. **Knowledge left in daily notes.** Knowledge should reach topic notes when it's recorded; this step catches what didn't. Look through the week's notes for things the user will want to find again: a recipe, a product they compared, a size that fit, advice someone gave, a conclusion they reached. Suggest where each one should go, preferring existing notes over new ones. Leave notes that only matter in the context of that day. End with the list of approved items and where each one goes; recording them in those notes is a separate step, after which the original line becomes a one-line pointer with a link.
+한 주를 깨끗한 작업 목록으로 마치고, 쓸모 있는 정보가 일일노트에 묻히지 않게 하는 것이 목표다.
 
-When there are many tasks, ask in batches of 4 so each answer stays a single tap.
+1. **열린 작업.** 일일노트에서 `[ ]`, `[/]` 작업을 노트 날짜 순으로 모은다. 작업마다 그대로 둘지, 완료(`[x]` + `✅ <날짜>`)할지, 그만둘지(`[-]` + `❌ <날짜>`) 묻는다. 사용자가 다른 날짜를 말하지 않으면 오늘 날짜를 쓴다. 작업은 처음 적은 노트에서 고치고, 새 노트로 옮겨 적지 않는다. 답하지 않은 작업은 그대로 둔다.
+2. **보류와 시간 날 때 할 일.** `[>]` 작업과 Vault가 쓰는 "시간 날 때" 작업을 보여 주고, 이번 주에 할 것을 묻는다. 고른 것은 그 자리에서 `[ ]`로 바꾼다.
+3. **일일노트에 남은 지식.** 지식은 기록할 때 주제 노트로 가야 하고, 이 단계는 그때 놓친 것을 줍는다. 그 주의 노트에서 사용자가 다시 찾을 것을 찾는다. 레시피, 비교해 본 물건, 맞았던 사이즈, 누가 해 준 조언, 사용자가 내린 결론 같은 것이다. 각각 어디로 옮길지 제안하되, 새 노트보다 기존 노트를 먼저 고른다. 그날의 맥락에서만 의미 있는 줄은 그대로 둔다. 승인받은 항목과 옮길 곳의 목록으로 마친다. 그 노트들에 기록하는 일은 별도 단계이고, 그 뒤 원래 줄은 링크를 단 한 줄로 바뀐다.
 
-## Principles
+작업이 많으면 4개씩 묶어 물어서 답이 한 번 누르기로 끝나게 한다.
 
-- The user decides what was good or bad. The notes only provide the options. Don't grade the day or fill gaps with guesses
-- Small, quick questions beat a complete questionnaire. If the user answers briefly, write briefly
-- Edits go in place, in the note where the item lives. A review should never create duplicate tasks
+## 원칙
+
+- 무엇이 좋았고 나빴는지는 사용자가 정한다. 노트는 선택지만 준다. 하루에 점수를 매기거나 빈 곳을 짐작으로 채우지 않는다
+- 빠짐없는 설문보다 작고 빠른 질문이 낫다. 사용자가 짧게 답하면 짧게 적는다
+- 고칠 것은 그 항목이 있는 노트에서 그 자리에서 고친다. 회고가 같은 작업을 두 번 만들어서는 안 된다
