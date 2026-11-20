@@ -22,7 +22,7 @@ Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar), th
 | Payment method names | The display names from a payment-method note, if the vault has one |
 | Images | Not stored in the vault. The receipt note keeps only the file name |
 
-If a daily-note skill is available, follow it for the daily note itself.
+Load the daily-note skill, if available, before writing the daily note; it has the line format and the memo emoji.
 
 ## Steps
 
@@ -51,7 +51,7 @@ Search existing receipt notes (and purchase lines) for the same approval number.
 - Put it in the Notes of the payment date's daily note, at the payment time. If there's a receipt note, link the time to it: ``[`HH:MM`](<Scan_20261116_221307.md>)``
 - Keep it short: merchant, what was bought (a short summary like "장보기" for long lists), amount, payment method
 - Use the payment method's display name from the vault. If the card isn't listed, write it as printed on the receipt and ask which card it is
-- If a purchase-log note or similar exists in the vault, link it the way existing lines do
+- If a purchase-log note or similar is still in use in the vault, link it the way existing lines do. A note moved to an archive no longer gets links
 
 ### 5. Card approval messages and spoken purchases
 

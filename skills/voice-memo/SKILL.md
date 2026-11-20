@@ -21,7 +21,7 @@ Before writing, read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`,
 | Recording time | The `YYMMDD_HHMMSS` part of the file name |
 | Translation | Only if the vault asks for one |
 
-Daily-note formats (sections, task states, emoji, date markers) come from the vault too. If a daily-note skill is available, follow it for those.
+Daily-note formats (sections, task states, emoji, date markers) come from the vault too. Load the daily-note skill, if available, before writing daily-note lines; it has the line format and the memo emoji.
 
 ## Steps
 
@@ -72,11 +72,11 @@ Each entry links its time to the raw note: ``[`HH:MM`](<raw note.md#section>)`` 
 | Putting an existing task on hold ("미뤄 둘게") | Change that task to `[>]` |
 | An appointment or event with a date | Task with `⏳ <date>`; the appointment time goes at the start of the text |
 | A purchase | The vault's purchase format (a receipt skill if available), with the recording link on the time |
-| Information heard or explained (advice, prices, how-tos) | Summarize the key points. If a fitting topic note exists, add it there and leave a memo `ℹ️ one-line summary [[note]]`. Otherwise write the summary as a memo, split into sub-items if long |
+| Something worth finding again (advice, prices, how-tos, a conclusion they reached) | Record the key points in a topic note (the topic-notes skill, if available) and leave a memo `ℹ️ one-line summary [[note]]` |
 | A phone call | Handle the person first (a people-notes skill if available): the details go in the person's note and the daily note gets one line. If the caller can't be identified, write a memo with `🔍` and ask in the reply |
 | Nothing to record | Archive only. Don't touch the daily note, and never leave a line that has only a time link |
 
-Don't create a summary note or an analysis per recording. The raw note plus the derived lines are the whole result.
+Topic notes are organized by subject, never by recording: don't create a summary or analysis note per recording. The raw note, the derived lines and any topic-note entries are the whole result.
 
 ### 5. Re-runs replace, they don't add
 

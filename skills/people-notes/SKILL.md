@@ -54,7 +54,7 @@ After adding a log entry, set `last_contact` to that date if it's later than the
 
 ## The daily note line
 
-Any contact gets a single line in that day's daily note memos, pointing to the person: ``- `HH:MM` ☎️ [[김민수]] 통화``. `HH:MM` is the clock time the user gave, or else the current time; don't guess one from "점심". Don't copy the details there. If a daily-note skill is available, follow it for the line format.
+Any contact gets a single line in that day's daily note memos, pointing to the person: ``- `HH:MM` ☎️ [[김민수]] 통화``. `HH:MM` is the clock time the user gave, or else the current time; don't guess one from "점심". Don't copy the details there. Load the daily-note skill, if available, before writing the line; it has the line format and the memo emoji.
 
 ## Privacy
 

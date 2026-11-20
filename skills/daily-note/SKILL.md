@@ -23,10 +23,10 @@ If you can't find a convention, use these defaults:
 | --- | --- |
 | Daily note | `journal/YYYY/YYYY-MM-DD.md`, created from the daily note template if one exists |
 | Sections | Highlight, Tasks, Notes, Gratitude, Review |
-| Task states | `[ ]` todo, `[/]` in progress, `[x]` done, `[>]` on hold, `[-]` cancelled, `[b]` someday |
+| Task states | `[ ]` todo, `[/]` in progress, `[x]` done, `[>]` on hold (still to do, so reminders show it), `[-]` cancelled, `[b]` someday (kept out of reminders) |
 | Task dates | Obsidian Tasks emoji at the end of the line: `⏳` scheduled, `✅` done, `❌` cancelled |
 | Logged time | 24-hour `HH:MM` in backticks at the start of the line |
-| Memo emoji | None, unless the vault defines a list |
+| Memo emoji | One per memo, from [`references/memo-emoji.md`](references/memo-emoji.md) |
 
 Older notes may follow an older structure. When you write into an existing note, find sections by their emoji or name and keep that note's structure as it is.
 
@@ -49,7 +49,8 @@ Older notes may follow an older structure. When you write into an existing note,
 | Something to do, or something done | Tasks | `- [ ] 세탁소 맡기기`, `- [x] 책 반납` |
 | Something with a fixed date (appointment, deadline) | Tasks, in today's note | `- [ ] 15:00 치과 ⏳ 2026-11-23` |
 | Something for whenever there's time ("시간 날 때", "언젠가", "해 보고 싶다") | Tasks | `- [b] 오래된 사진 정리` |
-| Status, activity, food, thoughts, links, small facts | Notes | `` - `12:30` 🍜 점심 칼국수 `` |
+| Status, activity, food, feelings, thoughts, links | Notes | `` - `12:30` 🍜 점심 칼국수 `` |
+| Something worth finding again: a price, a size that fit, a how-to, a conclusion they reached | A topic note (the topic-notes skill, if available), plus one linking memo in Notes | `` - `14:59` ℹ️ 러닝화 착화감 기록 [[발사이즈]] `` |
 | Something they're grateful for | Gratitude | `- 동료가 커피를 사 줌` |
 | Keep, Problem, Try | Review | Same line for one item, a `- ` list below the line for several |
 
@@ -78,7 +79,7 @@ To find the task, search the journal for open lines that match. If several match
 - **Date markers go last.** Nothing comes after `⏳`, `✅` or `❌`. If a line has two, `⏳` comes first: `- [x] 치과 ⏳ 2026-11-23 ✅ 2026-11-23`
 - **Logged time** starts every memo: `` - `08:50` 🏢 출근 ``. Use the clock time the user gave for when it happened; otherwise use the current time, when it's being recorded. Don't turn words like "점심", "아침" into a guessed time. A time that's part of the content (an appointment time) is plain text. Don't change the time format on lines the user wrote by hand
 - **Source links**: when an item comes from a source note (a recording transcript, a receipt), link the time to it. Use angle brackets because file names often contain spaces: ``- [`10:21`](<음성 20261113.md#음성 261113_102154>) 🥕 버즈 판매 완료``. Task lines put the link after the checkbox
-- **Memo emoji**: if the vault has an emoji list, pick exactly one per memo from it. Pick by what the thing is, not by a word in it. If nothing fits, use the vault's fallback emoji. Never invent one that isn't in the list
+- **Memo emoji**: pick exactly one per memo from the vault's list, or from [`references/memo-emoji.md`](references/memo-emoji.md) when the vault has none; read the list before choosing. Pick by what the thing is, not by a word in it. If nothing fits, use the list's fallback emoji. Never invent one that isn't in the list. Tasks and sub-items carry no emoji
 - **Follow-ups**: a later memo on the same topic the same day goes under the first one as a tab-indented sub-item, without an emoji
 - **Links**: add `[[note name]]` when a related note exists. Check that it exists; don't make up names
 - **Placeholders**: when you fill a section, remove its empty placeholder (`- `, `- [ ] `, `====`). Leave untouched sections exactly as the template has them
