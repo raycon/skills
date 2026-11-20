@@ -16,7 +16,7 @@ Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar), th
 | Thing | Default |
 | --- | --- |
 | Location | `People/<name>.md`, created from the person template if one exists |
-| Frontmatter | `aliases` (nicknames, titles, other spellings), `birthday: "MM-DD"`, `last_contact: "YYYY-MM-DD"`, `cadence` (contact goal such as `1개월`), tags `people/<relation>` (`people/family`, `people/work`) |
+| Frontmatter | `aliases` (nicknames, titles, other spellings), `birthday: "MM-DD"`, `last_contact: "YYYY-MM-DD"`, tags `people/<relation>` (`people/family`, `people/work`) |
 | Sections | Summary, Relationship, Info (Work, Life, Interests, Dates), Log, Next contact |
 
 ## Find the right person
@@ -62,7 +62,7 @@ Don't store phone numbers, addresses, or ID numbers. Keep only what helps the re
 
 ## Questions about people
 
-For "마지막으로 연락한 게 언제지?" read `last_contact` and the latest Log entries. For "연락 뜸한 사람" compare `last_contact` with `cadence` across person notes and list who is overdue, oldest first. These requests only read; don't edit anything.
+For "마지막으로 연락한 게 언제지?" read `last_contact` and the latest Log entries. For "연락 뜸한 사람" list person notes by `last_contact`, oldest first. These requests only read; don't edit anything.
 
 ## Reply
 
