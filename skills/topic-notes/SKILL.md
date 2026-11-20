@@ -19,22 +19,22 @@ Read the vault's project instructions (`CLAUDE.md`, `AGENTS.md`, or similar) and
 | Topic notes | Notes outside the journal and the raw archive, in the vault's folders (PARA or similar) |
 | Frontmatter | `created: "YYYY-MM-DD"` and `tags`, in the vault's existing format |
 | Entry date | `` `YYYY-MM-DD` `` at the start of the line: the day it was learned |
-| Web sources | A `## 참고` section at the end of the note, with the URLs |
+| Web sources | A `## Sources` section at the end of the note, with the URLs |
 
 ## Information and judgment
 
 Knowledge comes in two kinds, and they are handled differently:
 
 - **Information** is what anyone could check: a price, a size chart, a condition, a how-to. Summarize and rewrite it freely. Record it when it would be hard to find again or it fed a decision; skip what a quick search would find anyway
-- **Judgment** is the user's own: a conclusion, a preference, a decision and its reason, a lesson ("L이 딱 맞음", "다음엔 생수 챙기기"). Record it even when it's a single line, in the user's words. Nobody else can supply it, and rewording it changes what they concluded
-- Record a judgment only when the user stated one. A feeling without a conclusion ("개운했다") is an event and stays in the daily note
+- **Judgment** is the user's own: a conclusion, a preference, a decision and its reason, a lesson ("size L fits best", "bring water next time"). Record it even when it's a single line, in the user's words. Nobody else can supply it, and rewording it changes what they concluded
+- Record a judgment only when the user stated one. A feeling without a conclusion ("felt refreshed") is an event and stays in the daily note
 
 The most useful entries pair the two: a size chart and the size that actually fit, three prices and the one they picked. Keep such pairs next to each other.
 
 ## Find or create the note
 
 1. **Search first**: file names, aliases, headings, then content. Adding to a broader existing note beats creating a narrow new one; a vault of one-fact notes is as hard to use as no notes.
-2. **Create only when nothing fits.** Name the note by the subject the user would search for: `무선 이어폰`, not `이어폰 가격 비교 11월`. Place it by the vault's classification (in PARA: a Project if it has a deadline or end, an Area if it's ongoing, a Resource for reference). If unsure, put it in the inbox and say so.
+2. **Create only when nothing fits.** Name the note by the subject the user would search for: `Wireless earbuds`, not `Earbud price comparison November`. Place it by the vault's classification (in PARA: a Project if it has a deadline or end, an Area if it's ongoing, a Resource for reference). If unsure, put it in the inbox and say so.
 3. **People are not topics.** What the user learns about a person belongs in that person's note, not here.
 
 ## Write the entry
@@ -42,7 +42,7 @@ The most useful entries pair the two: a size chart and the size that actually fi
 - Date it with the day it was learned. For a recording or a receipt, that's the day it happened, not today
 - Put it under the heading it belongs to. Add headings once a note grows into parts
 - When a value or a judgment changes, add a new dated line and keep the old one. Both were true at their time, and old prices are often what the user is comparing against
-- Name the source when it isn't the user: URLs go in `## 참고`; something heard names who said it (`매장 직원`, `[[김민수]]`)
+- Name the source when it isn't the user: URLs go in the sources section; something heard names who said it (`store clerk`, `[[Alex]]`)
 
 ## Tidy a note
 
